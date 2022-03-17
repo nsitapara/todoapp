@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ToDoItem from "./ToDoItem";
 
 function App() {
   const [toDoList, setToDoList] = useState([]);
@@ -10,6 +11,11 @@ function App() {
   }
   function addItem(event) {
     setToDoList((prev) => [...prev, toDoText], setToDoText(""));
+  }
+  function removeItem(event) {
+    const { value } = event.target;
+    console.log(value);
+    setToDoList((prev) => prev.filter((item) => item !== value));
   }
 
   return (
@@ -32,7 +38,7 @@ function App() {
       <div>
         <ul>
           {toDoList.map((data, index) => (
-            <li key={index}>{data}</li>
+            <ToDoItem key={index} data={data} onClickHandler={removeItem} />
           ))}
         </ul>
       </div>
