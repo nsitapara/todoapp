@@ -3,7 +3,7 @@ import ToDoItem from "./ToDoItem";
 
 function App() {
   const [toDoList, setToDoList] = useState([]);
-  const [toDoText, setToDoText] = useState();
+  const [toDoText, setToDoText] = useState("");
 
   function handleOnchange(event) {
     const { value } = event.target;
