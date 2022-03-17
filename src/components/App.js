@@ -12,10 +12,10 @@ function App() {
   function addItem(event) {
     setToDoList((prev) => [...prev, toDoText], setToDoText(""));
   }
-  function removeItem(event) {
-    const { value } = event.target;
-    console.log(value);
-    setToDoList((prev) => prev.filter((item) => item !== value));
+
+  function removeItem(iValue) {
+    console.log(iValue);
+    setToDoList((prev) => prev.filter((item, index) => index !== iValue));
   }
 
   return (
@@ -38,7 +38,12 @@ function App() {
       <div>
         <ul>
           {toDoList.map((data, index) => (
-            <ToDoItem key={index} data={data} onClickHandler={removeItem} />
+            <ToDoItem
+              id={index}
+              key={index}
+              data={data}
+              onClickHandler={removeItem}
+            />
           ))}
         </ul>
       </div>
